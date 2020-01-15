@@ -1,0 +1,50 @@
+use Dighe
+
+create table Dighe (
+	IDDiga nvarchar(9) primary key,
+	Nome nvarchar(30),
+	Citta nvarchar(40),
+	LivelloArancio int check(LivelloArancio > 0),
+	LivelloRosso int check(LivelloRosso > 0)
+)
+
+create table Misurazioni (
+	IDMisurazione int primary key identity(1, 1),
+	IDDiga nvarchar(9),
+	Misurazione int check (Misurazione > 0),
+	Data datetime,
+	constraint fk_diga foreign key (IDDiga) references Dighe (IDDiga)
+)
+
+create table Allarmi (
+	IDAllarme int primary key identity(1, 1),
+	IDMisurazione int,
+	Rosso bit,
+	constraint fk_misurazione foreign key (IDMisurazione) references Misurazioni(IDMisurazione)
+)
+
+create table Operatori (
+	Username nvarchar(30) primary key,
+	Password nvarchar(64),
+	Nome nvarchar(10),
+	Cognome nvarchar(10),	
+	DataNascita date
+)
+
+create table Consultazioni (
+	IDConsultazione int primary key identity(1, 1),
+	Username nvarchar(30),
+	IDUltimaMisurazione int default null,
+	DataOra datetime default getdate(),
+	constraint fk_operatore foreign key (Username) references Operatori(Username)
+)
+
+create table OperatoriPerDiga (
+	IDOperatorePerDiga int primary key identity(1, 1),
+	Username nvarchar(30),
+	IDDiga nvarchar(9),
+	InizioContratto datetime default getdate(),
+	FineContratto datetime default null,
+	constraint fk_operatore_diga foreign key (Username) references Operatori(Username),
+	constraint fk_diga_operatore foreign key (IDDiga) references Dighe (IDDiga)
+)
