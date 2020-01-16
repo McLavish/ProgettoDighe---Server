@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO.Ports;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,7 @@ namespace DigheDBTest
 
         private void Server_Load(object sender, EventArgs e)
         {
+            routerPort.PortName = SerialPort.GetPortNames()[0];
             router = new RouterGSM(routerPort);
             router.Open();
             SendLevels();

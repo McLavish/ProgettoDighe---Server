@@ -37,33 +37,5 @@ namespace DigheDBTest
                 // Parsare il messaggio, se l'indice è 35 eliminare il 1° messaggio
             }
         }
-
-        public void SendMessage(string number, string text)
-        {
-            lock (SerialPort)
-            {
-                SerialPort.WriteLine("AT+CMGF=1\r");
-                Thread.Sleep(100);
-                string asderinO = $"AT+CMGS=+39{number.Trim().Replace(" ", String.Empty).Replace(" - ", String.Empty)}\r";
-                SerialPort.WriteLine(asderinO);
-
-                //se non lo metto esplode perchè è troppo veloce
-                Thread.Sleep(500);
-
-                //char 26 = ctrl + z
-                SerialPort.WriteLine(text + "\n\r" + (char)26);
-                Thread.Sleep(100);
-                SerialPort.ReadExisting();
-            }
-        }
-
-        public void DeleteAll(List<Message> listaMessaggi)
-        {
-            lock (SerialPort)
-            {
-                foreach (Message message in listaMessaggi)
-                    SerialPort.WriteLine($"AT+CMGD={message.MessageID}\r");
-            }
-        }
     }
 }

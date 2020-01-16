@@ -60,5 +60,11 @@ namespace DigheDBTest
         {
 
         }
+
+        private void btnLoginShow_Click(object sender, EventArgs e)
+        {
+            groupLog.Show();
+            groupReg.Hide();
+        }
     }
 }

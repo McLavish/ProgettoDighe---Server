@@ -53,6 +53,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridDighe)).BeginInit();
             this.SuspendLayout();
             // 
+            // routerPort
+            // 
+            this.routerPort.BaudRate = 115200;
+            this.routerPort.DtrEnable = true;
+            this.routerPort.RtsEnable = true;
+            // 
             // gridMisurazioni
             // 
             this.gridMisurazioni.AllowUserToAddRows = false;

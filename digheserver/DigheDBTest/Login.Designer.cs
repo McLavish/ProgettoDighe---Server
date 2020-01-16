@@ -47,6 +47,7 @@
             this.txtUsernameReg = new System.Windows.Forms.TextBox();
             this.txtPasswordReg = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.btnLoginShow = new System.Windows.Forms.Button();
             this.groupLog.SuspendLayout();
             this.groupReg.SuspendLayout();
             this.SuspendLayout();
@@ -123,10 +124,11 @@
             this.groupLog.Size = new System.Drawing.Size(305, 134);
             this.groupLog.TabIndex = 6;
             this.groupLog.TabStop = false;
-            this.groupLog.Text = "groupBox1";
+            this.groupLog.Text = "Login";
             // 
             // groupReg
             // 
+            this.groupReg.Controls.Add(this.btnLoginShow);
             this.groupReg.Controls.Add(this.dataNascita);
             this.groupReg.Controls.Add(this.label7);
             this.groupReg.Controls.Add(this.label6);
@@ -138,12 +140,12 @@
             this.groupReg.Controls.Add(this.txtUsernameReg);
             this.groupReg.Controls.Add(this.txtPasswordReg);
             this.groupReg.Controls.Add(this.label4);
-            this.groupReg.Location = new System.Drawing.Point(195, 42);
+            this.groupReg.Location = new System.Drawing.Point(180, 58);
             this.groupReg.Name = "groupReg";
             this.groupReg.Size = new System.Drawing.Size(358, 265);
             this.groupReg.TabIndex = 7;
             this.groupReg.TabStop = false;
-            this.groupReg.Text = "groupBox2";
+            this.groupReg.Text = "Register";
             this.groupReg.Visible = false;
             // 
             // dataNascita
@@ -211,7 +213,7 @@
             // 
             this.btnRegister.BackColor = System.Drawing.Color.White;
             this.btnRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRegister.Location = new System.Drawing.Point(128, 236);
+            this.btnRegister.Location = new System.Drawing.Point(95, 236);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(75, 23);
             this.btnRegister.TabIndex = 11;
@@ -244,6 +246,18 @@
             this.label4.Size = new System.Drawing.Size(53, 13);
             this.label4.TabIndex = 9;
             this.label4.Text = "Password";
+            // 
+            // btnLoginShow
+            // 
+            this.btnLoginShow.BackColor = System.Drawing.Color.White;
+            this.btnLoginShow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLoginShow.Location = new System.Drawing.Point(183, 236);
+            this.btnLoginShow.Name = "btnLoginShow";
+            this.btnLoginShow.Size = new System.Drawing.Size(75, 23);
+            this.btnLoginShow.TabIndex = 19;
+            this.btnLoginShow.Text = "Login";
+            this.btnLoginShow.UseVisualStyleBackColor = false;
+            this.btnLoginShow.Click += new System.EventHandler(this.btnLoginShow_Click);
             // 
             // Login
             // 
@@ -285,5 +299,6 @@
         private System.Windows.Forms.TextBox txtUsernameReg;
         private System.Windows.Forms.TextBox txtPasswordReg;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnLoginShow;
     }
 }

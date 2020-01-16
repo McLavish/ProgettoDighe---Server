@@ -1,7 +1,7 @@
 use Dighe
 
 create table Dighe (
-	IDDiga nvarchar(9) primary key,
+	IDDiga nvarchar(11) primary key,
 	Nome nvarchar(30),
 	Citta nvarchar(40),
 	LivelloArancio int check(LivelloArancio > 0),
@@ -10,7 +10,7 @@ create table Dighe (
 
 create table Misurazioni (
 	IDMisurazione int primary key identity(1, 1),
-	IDDiga nvarchar(9),
+	IDDiga nvarchar(11),
 	Misurazione int check (Misurazione > 0),
 	Data datetime,
 	constraint fk_diga foreign key (IDDiga) references Dighe (IDDiga)
@@ -42,7 +42,7 @@ create table Consultazioni (
 create table OperatoriPerDiga (
 	IDOperatorePerDiga int primary key identity(1, 1),
 	Username nvarchar(30),
-	IDDiga nvarchar(9),
+	IDDiga nvarchar(11),
 	InizioContratto datetime default getdate(),
 	FineContratto datetime default null,
 	constraint fk_operatore_diga foreign key (Username) references Operatori(Username),

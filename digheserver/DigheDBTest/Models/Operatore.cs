@@ -30,10 +30,16 @@ namespace DigheDBTest
 
         public bool Login(string password)
         {
-            SqlDataReader row = base.LoadData("Username", Username);
-            string storedPassword = row["password"].ToString();
-            row.Close();
-            return DigheDBTest.Database.Hash.GetHashString(password) == storedPassword;
+            try
+            {
+                SqlDataReader row = base.LoadData("Username", Username);
+                string storedPassword = row["password"].ToString();
+                row.Close();
+                return DigheDBTest.Database.Hash.GetHashString(password) == storedPassword;
+            } catch(Exception)
+            {
+                return false;
+            }
         }
 
         public bool Register(string password)

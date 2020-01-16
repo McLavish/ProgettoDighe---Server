@@ -25,18 +25,18 @@ namespace DigheDBTest
         public void Start()
         {
             var timer = new System.Timers.Timer();
-            timer.Interval = 30 * 60 * 1000;
+            timer.Interval = 1 * 1000;//30 * 60 * 1000;
             timer.Elapsed += Timer_Elapsed;
             timer.Start();
         }
 
         private void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
-            string messages = router.ReadMessages();
+            List<string> messages = router.ReadMessages().Split('\n').ToList();
 
             List<Message> messaggiLetti = new List<Message>();
 
-            messages.Split('\n').ToList().ForEach(new Action<string>((line) =>
+            messages.ForEach(new Action<string>((line) =>
             {
                 Message message = Message.Parse(line);
 
